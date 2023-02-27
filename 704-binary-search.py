@@ -12,12 +12,17 @@ class Solution(object):
         right = len(nums) - 1
 
         while left <= right:
+            #  //2 floor value
             mid = (left + right) // 2
 
             if nums[mid] > target:
+                # mid - 1 bc we already know that the target is not in mid,
+                # so shift one more
                 right = mid - 1
 
             elif nums[mid] < target:
+                # mid + 1 bc we already know that the target is not in mid,
+                # so shift one more
                 left = mid + 1
 
             else:
