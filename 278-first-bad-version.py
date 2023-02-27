@@ -9,22 +9,16 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        # edge base
-        if isBadVersion(n[0]):
-            return 0
+        left = 0
+        right = n
 
-        good_version = 0
+        # binary search
+        while left < right:
+            mid = (left + right) // 2
 
-        while good_version <= n:
-
-            mid = (good_version + n) // 2
-
-            if isBadVersion(mid) == False:
-                good_version = mid
-
+            if isBadVersion(mid):
+                right = mid
             else:
-                for i in range(good_version, mid):
-                    if isBadVersion(i):
-                        return i
+                left = mid + 1
 
-                    good_version = i
+        return left
