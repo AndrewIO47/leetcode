@@ -14,32 +14,26 @@ class MyQueue(object):
         """
         self.stack1.append(x)
 
-        # if not self.stack1:
-        #     self.stack1.append(x)
-        # else:
-        #     for i in self.stack1:
-        #         self.stack2.append(i)
-
-        #     self.stack1.append(x)
-        #     for i in self.stack2:
-        #         self.stack1.append(i)
-
     def pop(self):
         """
         :rtype: int
         """
-        for i in self.stack1:
-            self.stack2.append(i)
+        # if stack2 stack is empty
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
 
-        self.stack2.pop()
+        return self.stack2.pop()
 
     def peek(self):
         """
         :rtype: int
         """
-        for i in self.stack1:
-            self.stack2.append(i)
-        self.stack2[-1]
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+
+        return self.stack2[-1]
 
     def empty(self):
         """
